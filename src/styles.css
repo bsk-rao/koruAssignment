@@ -1,0 +1,71 @@
+
+:root {
+  --orange : #FFF1F1
+}
+
+body,html {
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+}
+* {
+  box-sizing: border-box;
+}
+
+.my-bg-orange {
+  background-color: var(--orange);
+}
+
+.my-header {
+  font-size: 4rem;
+  line-height: 5rem;
+  margin-top: 20%;
+}
+
+.my-ms-2rem {
+  margin-left: 2rem;
+}
+
+.my-invalid-form-control {
+  border: solid 1px red !important;
+  box-shadow: none !important;
+}
+
+
+.my-valid-form-control {
+  border: solid 1px #9FDCC5 !important;
+  box-shadow: none !important;
+}
+
+input:focus {
+  border : solid 1px var(--orange) !important;
+  box-shadow: none !important;
+}
+
+.my-visibility-hidden {
+  visibility: hidden;
+}
+
+.my-visibility-visible {
+  visibility: visible;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+
+@media screen and (max-width : 480px) {
+ /* .left-side {
+  background-color: green;
+  height: 80vh;
+  align-items: flex-start !important;
+ }
+ .right-side {
+  background-color: gray;
+ }
+ .my-header {
+  font-size: 2rem;
+  line-height: 2rem;
+ } */
+}
+

@@ -1,0 +1,63 @@
+<div class="row vh-100 vw-100">
+  <div class="col-lg-4 order-md-2 left-side">
+    <div class="d-flex justify-content-center align-items-md-center vh-100">
+      <div class="mt-4 mt-md-0 w-75">
+        <div class="text-center fs-1" style="letter-spacing: -2px;">
+          <h4 class="fs-2">your <span class="text-danger fw-bold">logo</span> ®️️</h4>
+        </div>
+        <div class="card mt-5 border-0">
+          <div class="card-header bg-white border-0 text-center fs-4 fw-bold">
+            <div>
+              <img src="../../assets/images/padlock.png" alt="Lock" style="height: 50px;">
+              <br>
+              Welcome back
+            </div>
+          </div>
+          <div class="card-body">
+
+              <div class="input-group">
+                <span class="input-group-text"><i class="fi fi-ss-user"></i></span>
+                <input type="text" class="form-control" placeholder="Username" [(ngModel)]="userName" />
+              </div>
+              <div class="input-group mt-3" [ngClass]="!validFormatOfPassword ? 'my-invalid-form-control' : 'my-valid-form-control'">
+                <span class="input-group-text"><i class="fi fi-ss-lock"></i></span>
+                <input type="password" class="form-control border-end-0" placeholder="Password" [(ngModel)]="passWord" (ngModelChange)="onPasswordChange()"/>
+                <span *ngIf="validFormatOfPassword" class="input-group-text text-success bg-white"> <i class="fi fi-bs-check"></i> </span>
+              </div>
+              <p class="text-danger form-text" [ngClass]="validFormatOfPassword ? 'my-visibility-hidden' : 'my-visibility-visible'">
+                <i class="fi fi-sr-triangle-warning"></i>
+                Please enter atleast 8 character with number, symbol, capital and small letter
+              </p>
+              <p class="form-text float-end">Forgot Password?</p>
+
+          </div>
+          <div class="card-footer bg-white border-0 d-grid">
+            <button class="btn btn-danger" (click)="onLogin()">Login</button>
+          </div>
+          <div class="mt-3 text-center">
+            <p class="form-text">Don't have an account? <span class="fw-bold">SignUp</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8 order-md-1 my-bg-orange right-side">
+    <div id="heading" class="ms-5">
+      <div class="my-header">
+            <span class="fw-bold">  Digital </span>
+            <span class="fw-lighter"> Platform
+              <br>
+              for
+              distance
+            </span>
+            <span class="fw-bold">learning</span>
+      </div>
+      <div class="mt-4 fs-5 w-75">
+        <p class="opacity-75">
+          Internet and online based digital technologies such as desktop
+          computers, mobile phones and other
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
