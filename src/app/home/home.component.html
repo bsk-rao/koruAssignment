@@ -3,43 +3,54 @@
 </div>
 
 <div class="p-3">
-  <div class="">
+
     <p class="float-start fw-bold">
       Lorem ipsum dolor sit
     </p>
     <button class="float-end btn btn-danger" (click)="onMasterDelete()" [disabled]="!isAtleastOneUserSelected"> Delete </button>
-  </div>
 
-  <table class="table table-bordered table-hover table-responsive fs-6" style="font-size: 10px;">
+
+  <table *ngIf="users.length>0; else emptyContainer" class="table table-bordered table-hover table-responsive fs-6 overflow-scroll" style="font-size: 10px;">
     <thead>
       <tr class="">
         <th>
           <input type="checkbox" class="form-check-input" [(ngModel)]="masterCheckBox" (change)="onMasterCheckBoxChange()">
         </th>
-        <th>User Name <i class="fi fi-sr-sort"></i>
-          <!-- <i class="fi fi-rr-sort-amount-down-alt"></i>
-          <i class="fi fi-rr-sort-amount-up-alt"></i>  -->
+        <th *ngFor="let header of tableHeaders">{{header.name}}
+          <i class="{{header.sortIcon}} btn" (click)="onColumnSortChange(header)" ></i>
         </th>
+
+        <!-- <th>User Name <i class="fi fi-sr-sort"></i></th>
         <th>Phone Number <i class="fi fi-sr-sort"></i> </th>
-        <th>Email ID <i class="fi fi-sr-sort"></i> </th>
+        <th>Email ID <i class="fi fi-sr-sort"></i> </th> -->
         <th class="text-end">Options ℹ️</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td>
-          <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
-        </td>
-        <td>{{user.userName}}</td>
-        <td>{{user.phoneNumber}}</td>
-        <td>{{user.emailID}}</td>
-        <td class="">
-          <div class="float-end fs-6">
-            <button class="btn" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
-            <button class="btn"><i class="fi fi-rr-apps-sort"></i></button>
-          </div>
-        </td>
-      </tr>
+    <tbody  *ngIf="isTable">
+      <ng-container *ngFor="let user of users">
+        <tr [@leaveAnimation]>
+          <td>
+            <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
+          </td>
+          <td [@enterAnimation]>{{user.userName}}</td>
+          <td [@enterAnimation]>{{user.phoneNumber}}</td>
+          <td [@enterAnimation]>{{user.emailID}}</td>
+          <td class="">
+            <div class="float-end fs-6">
+              <button class="btn" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
+              <button class="btn"><i class="fi fi-rr-apps-sort"></i></button>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
     </tbody>
   </table>
+
+  <ng-template #emptyContainer>
+  <div class="mt-5 text-center">
+      <img src="../../assets/images/empty.png" alt="" height="300px" width="300px">
+      <p class="form-text text-danger fw-bolder" style="letter-spacing: 3px;">OOOOPS! All Data Erased</p>
+    </div>
+  </ng-template>
+
 </div>
