@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IndividualConfig, ToastRef, ToastrService } from 'ngx-toastr';
+import { IndividualConfig, ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +13,20 @@ export class ToasterService {
     warning: 'toast-warning',
   };
 
-  config = {
+  config : Partial<IndividualConfig> = {
     closeButton : true,
     positionClass : 'toast-bottom-right',
-    progressBar : true,
+    progressBar : true
   }
   constructor(private toaster : ToastrService) {
   }
 
   success(message: any,title: any) {
     this.toaster.success(message,title,this.config)
+  }
+
+  error(message:any, title:any) {
+    this.toaster.error(message,title,this.config)
   }
 
 }

@@ -20,7 +20,7 @@ import { ToasterService } from './services/toaster.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({preventDuplicates : true}),
     AppRoutingModule
   ],
   providers: [ToasterService],

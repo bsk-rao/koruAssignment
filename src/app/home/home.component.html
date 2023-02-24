@@ -5,19 +5,21 @@
 <div class="p-3">
   <div class="">
     <p class="float-start fw-bold">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Lorem ipsum dolor sit
     </p>
-    <button class="float-end btn btn-danger" (click)="onDelete()"> Delete </button>
+    <button class="float-end btn btn-danger" (click)="onMasterDelete()" [disabled]="!isAtleastOneUserSelected"> Delete </button>
   </div>
 
-
-  <table class="table table-bordered table-hover fs-6" style="font-size: 10px;">
+  <table class="table table-bordered table-hover table-responsive fs-6" style="font-size: 10px;">
     <thead>
-      <tr class="form-text">
+      <tr class="">
         <th>
           <input type="checkbox" class="form-check-input" [(ngModel)]="masterCheckBox" (change)="onMasterCheckBoxChange()">
         </th>
-        <th>User Name <i class="fi fi-sr-sort"></i><i class="fi fi-rr-sort-amount-down-alt"></i><i class="fi fi-rr-sort-amount-up-alt"></i> </th>
+        <th>User Name <i class="fi fi-sr-sort"></i>
+          <!-- <i class="fi fi-rr-sort-amount-down-alt"></i>
+          <i class="fi fi-rr-sort-amount-up-alt"></i>  -->
+        </th>
         <th>Phone Number <i class="fi fi-sr-sort"></i> </th>
         <th>Email ID <i class="fi fi-sr-sort"></i> </th>
         <th class="text-end">Options ℹ️</th>
@@ -26,14 +28,14 @@
     <tbody>
       <tr *ngFor="let user of users">
         <td>
-          <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
         </td>
         <td>{{user.userName}}</td>
         <td>{{user.phoneNumber}}</td>
         <td>{{user.emailID}}</td>
         <td class="">
           <div class="float-end fs-6">
-            <button class="btn"><i class="fi fi-rr-trash"></i></button>
+            <button class="btn" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
             <button class="btn"><i class="fi fi-rr-apps-sort"></i></button>
           </div>
         </td>
