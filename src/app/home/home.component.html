@@ -1,50 +1,65 @@
-<div class="fs-1 shadow-lg p-2" style="letter-spacing: -2px;">
-  <h4 class="fs-2 ms-3">your <span class="text-danger fw-bold">logo</span> ®️️</h4>
-</div>
+<div class="container-fluid">
+  <div class="fs-1 shadow-lg p-2" style="letter-spacing: -2px;">
+    <h4 class="fs-2 ms-3">your <span class="text-danger fw-bold">logo</span> ®️️</h4>
+  </div>
 
-<div class="p-3">
-
+  <div class="p-3">
     <p class="float-start fw-bold">
       Lorem ipsum dolor sit
     </p>
-    <button class="float-end btn btn-danger" (click)="onMasterDelete()" [disabled]="!isAtleastOneUserSelected"> Delete </button>
+    <button class="float-end btn btn-danger" (click)="onMasterDelete()" data-bs-toggle="modal" data-bs-target="#deleteModal" [disabled]="!isAtleastOneUserSelected"> Delete </button>
+  </div>
+</div>
 
+<div class="container-fluid overflow-scroll">
 
-  <table *ngIf="users.length>0; else emptyContainer" class="table table-bordered table-hover table-responsive fs-6 overflow-scroll" style="font-size: 10px;">
-    <thead>
-      <tr class="">
-        <th>
-          <input type="checkbox" class="form-check-input" [(ngModel)]="masterCheckBox" (change)="onMasterCheckBoxChange()">
-        </th>
-        <th *ngFor="let header of tableHeaders">{{header.name}}
-          <i class="{{header.sortIcon}} btn" (click)="onColumnSortChange(header)" ></i>
-        </th>
-
-        <!-- <th>User Name <i class="fi fi-sr-sort"></i></th>
-        <th>Phone Number <i class="fi fi-sr-sort"></i> </th>
-        <th>Email ID <i class="fi fi-sr-sort"></i> </th> -->
-        <th class="text-end">Options ℹ️</th>
-      </tr>
-    </thead>
-    <tbody  *ngIf="isTable">
-      <ng-container *ngFor="let user of users">
-        <tr [@leaveAnimation]>
-          <td>
-            <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
-          </td>
-          <td [@enterAnimation]>{{user.userName}}</td>
-          <td [@enterAnimation]>{{user.phoneNumber}}</td>
-          <td [@enterAnimation]>{{user.emailID}}</td>
-          <td class="">
-            <div class="float-end fs-6">
-              <button class="btn" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
-              <button class="btn"><i class="fi fi-rr-apps-sort"></i></button>
-            </div>
-          </td>
+  <div class="table-responsive w-100">
+    <table *ngIf="users.length>0; else emptyContainer" class="table table-bordered table-hover fs-6" style="font-size: 10px; width: 1500px !important;">
+      <thead>
+        <tr class="fs-6" style="font-size: 14px !important;">
+          <th class="align-text-top mob-fs">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="masterCheckBox" (change)="onMasterCheckBoxChange()">
+          </th>
+          <th *ngFor="let header of tableHeaders" class="mob-fs">
+            {{header.name}}
+            <i data-bs-toggle="tooltip" data-bs-title="Sort" data-bs-placement="right" class="{{header.sortIcon}} btn"
+              (click)="onColumnSortChange(header)"></i>
+          </th>
+          <th class="text-center align-text-top mob-fs">Options ℹ️</th>
         </tr>
-      </ng-container>
-    </tbody>
-  </table>
+      </thead>
+      <tbody  *ngIf="isTable">
+        <ng-container *ngFor="let user of users">
+          <tr [@leaveAnimation] [ngClass]="user.isSelected ? 'my-bg-orange' : ''">
+            <td>
+              <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
+            </td>
+            <td>{{user.userName}}</td>
+            <td>{{user.phoneNumber}}</td>
+            <td>{{user.emailID}}</td>
+            <td class="text-center">
+              <div class="fs-6 d-flex justify-content-center">
+                <div data-bs-toggle="tooltip"
+                data-bs-title="Delete"
+                data-bs-placement="bottom">
+                <button class="btn"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
+                </div>
+                <div>
+                  <button  class="btn"
+                  data-bs-toggle="tooltip"
+                  data-bs-title="ReOrder"
+                  data-bs-placement="bottom"><i class="fi fi-rr-apps-sort"></i></button>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
 
   <ng-template #emptyContainer>
   <div class="mt-5 text-center">
@@ -52,5 +67,29 @@
       <p class="form-text text-danger fw-bolder" style="letter-spacing: 3px;">OOOOPS! All Data Erased</p>
     </div>
   </ng-template>
-
 </div>
+
+
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+    <div class="row w-100">
+      <div class="col-2 bg-danger d-flex justify-content-center align-items-center">
+        <div class="my-delete-modal-icon h-50">
+          <i class="fi fi-rr-trash"></i>
+        </div>
+      </div>
+      <div class="col-10 p-0">
+          <div class="modal-content rounded-0">
+            <div class="modal-body text-center text-md-start">
+              <strong>Are you sure you want to delete?</strong>
+            </div>
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="onDeleteConfirmation()">Yes</button>
+              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
