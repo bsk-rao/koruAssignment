@@ -5,7 +5,6 @@
 body,html {
   margin: 0;
   padding: 0;
-  /* overflow: hidden; */
 }
 * {
   box-sizing: border-box;
@@ -64,24 +63,34 @@ tr:hover {
   background-color: var(--orange) !important;
 }
 
+tr:hover .my-options {
+  visibility: visible;
+}
+
 .table>:not(caption)>*>* {
   padding: 0 !important;
   padding-left: 1px !important;
   margin: 0 !important;
 }
 
+.my-options:hover {
+  visibility: visible;
+}
+
+.my-options {
+  visibility: hidden;
+}
+
 @media screen and (max-width : 480px) {
-  /* .left-side {
-   background-color: green;
-   height: 80vh;
-   align-items: flex-start !important;
+  .mob-t-size {
+    width: 600px !important;
   }
-  .right-side {
-   background-color: gray;
+}
+
+@media screen and (min-width : 481px) {
+  .mob-t-size {
+    width: 1500px !important;
   }
-  .my-header {
-   font-size: 2rem;
-   line-height: 2rem;
-  } */
- }
+}
+
 

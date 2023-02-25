@@ -1,20 +1,20 @@
-<div class="container-fluid">
+<div class="">
   <div class="fs-1 shadow-lg p-2" style="letter-spacing: -2px;">
     <h4 class="fs-2 ms-3">your <span class="text-danger fw-bold">logo</span> ®️️</h4>
   </div>
 
   <div class="p-3">
     <p class="float-start fw-bold">
-      Lorem ipsum dolor sit
+      Lorem ipsum is a dummy text
     </p>
     <button class="float-end btn btn-danger" (click)="onMasterDelete()" data-bs-toggle="modal" data-bs-target="#deleteModal" [disabled]="!isAtleastOneUserSelected"> Delete </button>
   </div>
 </div>
 
-<div class="container-fluid overflow-scroll">
+<div class="container-fluid overflow-auto">
 
   <div class="table-responsive w-100">
-    <table *ngIf="users.length>0; else emptyContainer" class="table table-bordered table-hover fs-6" style="font-size: 10px; width: 1500px !important;">
+    <table *ngIf="users.length>0; else emptyContainer" class="table table-bordered table-hover fs-6 mob-t-size">
       <thead>
         <tr class="fs-6" style="font-size: 14px !important;">
           <th class="align-text-top mob-fs">
@@ -38,7 +38,7 @@
             <td>{{user.phoneNumber}}</td>
             <td>{{user.emailID}}</td>
             <td class="text-center">
-              <div class="fs-6 d-flex justify-content-center">
+              <div class="fs-6 d-flex justify-content-center my-options">
                 <div data-bs-toggle="tooltip"
                 data-bs-title="Delete"
                 data-bs-placement="bottom">
@@ -70,8 +70,8 @@
 </div>
 
 
-  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered d-flex justify-content-center">
     <div class="row w-100">
       <div class="col-2 bg-danger d-flex justify-content-center align-items-center">
         <div class="my-delete-modal-icon h-50">
@@ -79,17 +79,17 @@
         </div>
       </div>
       <div class="col-10 p-0">
-          <div class="modal-content rounded-0">
-            <div class="modal-body text-center text-md-start">
-              <strong>Are you sure you want to delete?</strong>
-            </div>
-            <div class="modal-footer border-0">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="onDeleteConfirmation()">Yes</button>
-              <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-            </div>
+        <div class="modal-content rounded-0">
+          <div class="modal-body text-center text-md-start">
+            <strong>Are you sure you want to delete?</strong>
+          </div>
+          <div class="modal-footer border-0">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+              (click)="onDeleteConfirmation()">Yes</button>
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+</div>

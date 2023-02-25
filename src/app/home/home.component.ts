@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToasterService } from '../services/toaster.service';
 import {trigger, transition, style, animate} from '@angular/animations'
-import {  observable, Observable } from 'rxjs'
+import { Observable } from 'rxjs'
 declare var bootstrap: any;
 @Component({
   selector: 'app-home',

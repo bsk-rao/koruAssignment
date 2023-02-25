@@ -13,30 +13,35 @@
               Welcome back
             </div>
           </div>
+          <form [formGroup]="loginForm">
           <div class="card-body">
+                <div class="input-group" [ngClass]="(loginForm.touched && loginForm.get('userName')?.errors) ? 'my-invalid-form-control' : 'my-valid-form-control'">
+                  <span class="input-group-text"><i class="fi fi-ss-user"></i></span>
+                  <input type="text" formControlName="userName" class="form-control" placeholder="Username" />
+                </div>
+                <!-- <p class="text-danger form-text" [ngClass]="(loginForm.touched && loginForm.get('userName')?.errors) ? 'my-visibility-visible' : 'my-visibility-hidden'">
+                  <i class="fi fi-sr-triangle-warning"></i>
+                  Please enter username
+                </p> -->
+                <div class="input-group mt-3" [ngClass]="(loginForm.touched && loginForm.get('passWord')?.errors) ? 'my-invalid-form-control' : 'my-valid-form-control'">
+                  <span class="input-group-text"><i class="fi fi-ss-lock"></i></span>
+                  <input type="password" formControlName="passWord" class="form-control border-end-0" placeholder="Password"/>
+                  <span *ngIf="!(loginForm.get('passWord')?.errors)" class="input-group-text text-success bg-white"> <i class="fi fi-bs-check"></i> </span>
+                </div>
+                <p class="text-danger form-text" [ngClass]="(loginForm.touched && loginForm.get('passWord')?.errors) ? 'my-visibility-visible' : 'my-visibility-hidden'">
+                  <i class="fi fi-sr-triangle-warning"></i>
+                  Please enter atleast 8 character with number, symbol, capital and small letter
+                </p>
+                <p class="form-text float-end">Forgot Password?</p>
 
-              <div class="input-group">
-                <span class="input-group-text"><i class="fi fi-ss-user"></i></span>
-                <input type="text" class="form-control" placeholder="Username" [(ngModel)]="userName" />
               </div>
-              <div class="input-group mt-3" [ngClass]="!validFormatOfPassword ? 'my-invalid-form-control' : 'my-valid-form-control'">
-                <span class="input-group-text"><i class="fi fi-ss-lock"></i></span>
-                <input type="password" class="form-control border-end-0" placeholder="Password" [(ngModel)]="passWord" (ngModelChange)="onPasswordChange()"/>
-                <span *ngIf="validFormatOfPassword" class="input-group-text text-success bg-white"> <i class="fi fi-bs-check"></i> </span>
+            </form>
+              <div class="card-footer bg-white border-0 d-grid">
+                <button class="btn btn-danger" (click)="onLogin()">Login</button>
               </div>
-              <p class="text-danger form-text" [ngClass]="validFormatOfPassword ? 'my-visibility-hidden' : 'my-visibility-visible'">
-                <i class="fi fi-sr-triangle-warning"></i>
-                Please enter atleast 8 character with number, symbol, capital and small letter
-              </p>
-              <p class="form-text float-end">Forgot Password?</p>
-
-          </div>
-          <div class="card-footer bg-white border-0 d-grid">
-            <button class="btn btn-danger" (click)="onLogin()">Login</button>
-          </div>
-          <div class="mt-3 text-center">
-            <p class="form-text">Don't have an account? <span class="fw-bold">SignUp</span></p>
-          </div>
+              <div class="mt-3 text-center">
+                <p class="form-text">Don't have an account? <span class="fw-bold">SignUp</span></p>
+              </div>
         </div>
       </div>
     </div>
