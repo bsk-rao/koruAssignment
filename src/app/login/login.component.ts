@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {FormBuilder, FormControl, FormGroup, Validators, FormControlStatus} from '@angular/forms'
+import { UserService } from '../services/user.service';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,44 +10,24 @@ import {FormBuilder, FormControl, FormGroup, Validators, FormControlStatus} from
 })
 export class LoginComponent implements OnInit {
 
-  userName: string | undefined
-  passWord: string | undefined
-  validFormatOfPassword: boolean = true;
-  passwordValidationRegx : RegExp = new RegExp('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$')
-
   loginForm : FormGroup
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(private router: Router, private fb: FormBuilder, private userService: UserService, private authService: AuthService) {
     this.loginForm = this.fb.group({
       userName : ['', [Validators.required]],
       passWord : ['', [Validators.required, Validators.minLength(8), this.passwordValidation]]
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onLogin() {
     console.log(this.loginForm)
     if(this.loginForm.status== "VALID") {
-      if(this.validFormatOfPassword) {
+        this.authService.successfulLogIn();
         this.router.navigate(['home']);
-    }
    }
    else this.loginForm.markAsTouched()
-  }
-
-  onPasswordChange() {
-    this.validFormatOfPassword = this.checkValidFormatOfPassword();
-  }
-
-  checkValidFormatOfPassword(): boolean {
-    if(this.passWord) {
-      if(this.passWord.length>8) {
-        return true;
-      }
-    }
-    return false;
   }
 
   passwordValidation(control: FormControl) {

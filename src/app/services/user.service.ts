@@ -11,4 +11,11 @@ export class UserService {
     return this.http.get("http://localhost:3000/users");
   }
 
+  isLoggedIn() {
+    return !!sessionStorage.getItem('isLoggedIn');
+  }
+  successfulLogin() {
+    sessionStorage.setItem('isLoggedIn','true');
+  }
+
 }

@@ -11,6 +11,7 @@ import { ToasterService } from './services/toaster.service';
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     ToastrModule.forRoot({preventDuplicates : true}),
     AppRoutingModule
   ],
-  providers: [ToasterService,UserService],
+  providers: [ToasterService,UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
