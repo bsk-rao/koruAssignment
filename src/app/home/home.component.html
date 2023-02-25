@@ -1,73 +1,71 @@
-<div class="">
-  <div class="fs-1 shadow-lg p-2" style="letter-spacing: -2px;">
-    <h4 class="fs-2 ms-3">your <span class="text-danger fw-bold">logo</span> ®️️</h4>
-  </div>
-
-  <div class="p-3">
-    <p class="float-start fw-bold">
-      Lorem ipsum is a dummy text
-    </p>
-    <button class="float-end btn btn-danger" (click)="onMasterDelete()" data-bs-toggle="modal" data-bs-target="#deleteModal" [disabled]="!isAtleastOneUserSelected"> Delete </button>
-  </div>
+<div class="fs-1 shadow-lg p-2" style="letter-spacing: -2px;">
+  <h4 class="fs-2 ms-3">your <span class="text-danger fw-bold">logo</span> ®️️</h4>
 </div>
 
-<div class="container-fluid overflow-auto">
-
-  <div class="table-responsive w-100">
-    <table *ngIf="users.length>0; else emptyContainer" class="table table-bordered table-hover fs-6 mob-t-size">
-      <thead>
-        <tr class="fs-6" style="font-size: 14px !important;">
-          <th class="align-text-top mob-fs">
-            <input type="checkbox" class="form-check-input" [(ngModel)]="masterCheckBox" (change)="onMasterCheckBoxChange()">
-          </th>
-          <th *ngFor="let header of tableHeaders" class="mob-fs">
-            {{header.name}}
-            <i data-bs-toggle="tooltip" data-bs-title="Sort" data-bs-placement="right" class="{{header.sortIcon}} btn"
-              (click)="onColumnSortChange(header)"></i>
-          </th>
-          <th class="text-center align-text-top mob-fs">Options ℹ️</th>
-        </tr>
-      </thead>
-      <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
-        <ng-container *ngFor="let user of users">
-          <tr [@leaveAnimation] cdkDrag cdkDragLockAxis="y" [ngClass]="user.isSelected ? 'my-bg-orange' : ''" >
-            <td>
-              <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
-            </td>
-            <td>{{user.userName}}</td>
-            <td>{{user.phoneNumber}}</td>
-            <td>{{user.emailID}}</td>
-            <td class="text-center">
-              <div class="fs-6 d-flex justify-content-center my-options">
-                <div data-bs-toggle="tooltip"
-                data-bs-title="Delete"
-                data-bs-placement="bottom">
-                <button class="btn"
-                data-bs-toggle="modal"
-                data-bs-target="#deleteModal" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
-                </div>
-                <div>
-                  <button  class="btn"
-                  data-bs-toggle="tooltip"
-                  data-bs-title="ReOrder"
-                  data-bs-placement="bottom"><i class="fi fi-rr-apps-sort"></i></button>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
-  </div>
-
-
-  <ng-template #emptyContainer>
-  <div class="mt-5 text-center">
-      <img src="../../assets/images/empty.png" alt="" height="300px" width="300px">
-      <p class="form-text text-danger fw-bolder" style="letter-spacing: 3px;">OOOOPS! All Data Erased</p>
+<ng-container *ngIf="(users.length>0); else emptyContainer">
+    <div class="p-3">
+      <p class="float-start fw-bold">
+        Lorem ipsum is a dummy text
+      </p>
+      <button class="float-end btn btn-danger" (click)="onMasterDelete()" data-bs-toggle="modal" data-bs-target="#deleteModal" [disabled]="!isAtleastOneUserSelected"> Delete </button>
     </div>
-  </ng-template>
-</div>
+  <div class="container-fluid overflow-auto">
+    <div class="table-responsive w-100">
+      <table class="table table-bordered table-hover fs-6 mob-t-size">
+        <thead>
+          <tr class="fs-6" style="font-size: 14px !important;">
+            <th class="align-text-top mob-fs">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="masterCheckBox" (change)="onMasterCheckBoxChange()">
+            </th>
+            <th *ngFor="let header of tableHeaders" class="mob-fs">
+              {{header.name}}
+              <i data-bs-toggle="tooltip" data-bs-title="Sort" data-bs-placement="right" class="{{header.sortIcon}} btn"
+                (click)="onColumnSortChange(header)"></i>
+            </th>
+            <th class="text-center align-text-top mob-fs">Options ℹ️</th>
+          </tr>
+        </thead>
+        <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
+          <ng-container *ngFor="let user of users">
+            <tr [@leaveAnimation] cdkDrag cdkDragLockAxis="y" [ngClass]="user.isSelected ? 'my-bg-orange' : ''" >
+              <td>
+                <input type="checkbox" class="form-check-input" [(ngModel)]="user.isSelected" (change)="onUserSelectionChange()">
+              </td>
+              <td>{{user.userName}}</td>
+              <td>{{user.phoneNumber}}</td>
+              <td>{{user.emailID}}</td>
+              <td class="text-center">
+                <div class="fs-6 d-flex justify-content-center my-options">
+                  <div data-bs-toggle="tooltip"
+                  data-bs-title="Delete"
+                  data-bs-placement="bottom">
+                  <button class="btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal" (click)="onDeleteUser(user.id)"><i class="fi fi-rr-trash"></i></button>
+                  </div>
+                  <div>
+                    <button  class="btn"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="ReOrder"
+                    data-bs-placement="bottom"><i class="fi fi-rr-apps-sort"></i></button>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>
+
+
+<ng-template #emptyContainer>
+<div class="mt-5 text-center" *ngIf="isDataLoaded">
+    <img src="../../assets/images/empty.png" alt="" height="300px" width="300px">
+    <p class="form-text text-danger fw-bolder" style="letter-spacing: 3px;">{{noDataMessage}}</p>
+  </div>
+</ng-template>
 
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -93,13 +91,3 @@
     </div>
   </div>
 </div>
-
-
-<ng-template #dragHandleTmpl>
-	<svg class="bi bi-list handle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-		xmlns="http://www.w3.org/2000/svg">
-		<path fill-rule="evenodd"
-			d="M2.5 11.5A.5.5 0 013 11h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 7h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 3h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z"
-			clip-rule="evenodd" />
-	</svg>
-</ng-template>

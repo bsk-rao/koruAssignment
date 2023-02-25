@@ -1,0 +1,116 @@
+{
+  "users" : [
+     {
+      "id": 1,
+      "isSelected": false,
+      "userName": "Dianne Russell",
+      "phoneNumber": "+7(123)072-36-28",
+      "emailID": "dianne.russell@gmail.com"
+    },
+    {
+      "id": 2,
+      "isSelected": false,
+      "userName": "Jacob Jones",
+      "phoneNumber": "+7(123)712-21-31",
+      "emailID": "jacob.jones@gmail.com"
+    },
+    {
+      "id": 3,
+      "isSelected": false,
+      "userName": "Wade Warren",
+      "phoneNumber": "+7(123)029-76-47",
+      "emailID": "wade.warren@gmail.com"
+    },
+    {
+      "id": 4,
+      "isSelected": false,
+      "userName": "Bessie Cooper",
+      "phoneNumber": "+7(123)072-36-61",
+      "emailID": "bessie.cooper@gmail.com"
+    },
+    {
+      "id": 5,
+      "isSelected": false,
+      "userName": "Leslie Alexander",
+      "phoneNumber": "+7(123)072-36-69",
+      "emailID": "lesile.alexander@gmail.com"
+    },
+    {
+      "id": 6,
+      "isSelected": false,
+      "userName": "Guy Hawkins",
+      "phoneNumber": "+7(123)029-76-75",
+      "emailID": "guy.hawkins@gmail.com"
+    },
+    {
+      "id": 7,
+      "isSelected": false,
+      "userName": "Robert Fox",
+      "phoneNumber": "+7(123)712-21-80",
+      "emailID": "robert.fox@gmail.com"
+    },
+    {
+      "id": 8,
+      "isSelected": false,
+      "userName": "Wade Warren",
+      "phoneNumber": "+7(123)072-36-28",
+      "emailID": "wade.warren@gmail.com"
+    },
+    {
+      "id": 9,
+      "isSelected": false,
+      "userName": "Bessie Cooper",
+      "phoneNumber": "+7(123)712-21-31",
+      "emailID": "bessie.cooper@gmail.com"
+    },
+    {
+      "id": 10,
+      "isSelected": false,
+      "userName": "Leslie Alexander",
+      "phoneNumber": "+7(123)072-36-28",
+      "emailID": "lesile.alexander@gmail.com"
+    },
+    {
+      "id": 11,
+      "isSelected": false,
+      "userName": "Dianne Russell",
+      "phoneNumber": "+7(123)029-76-47",
+      "emailID": "dianne.russell@gmail.com"
+    },
+    {
+      "id": 12,
+      "isSelected": false,
+      "userName": "Bessie Cooper",
+      "phoneNumber": "+7(123)072-36-61",
+      "emailID": "bessie.cooper@gmail.com"
+    },
+    {
+      "id": 13,
+      "isSelected": false,
+      "userName": "Leslie Alexander",
+      "phoneNumber": "+7(123)072-36-69",
+      "emailID": "lesile.alexander@gmail.com"
+    },
+    {
+      "id": 14,
+      "isSelected": false,
+      "userName": "Guy Hawkins",
+      "phoneNumber": "+7(123)029-76-75",
+      "emailID": "guy.hawkins@gmail.com"
+    },
+    {
+      "id": 15,
+      "isSelected": false,
+      "userName": "Robert Fox",
+      "phoneNumber": "+7(123)712-21-80",
+      "emailID": "robert.fox@gmail.com"
+    },
+    {
+      "id": 16,
+      "isSelected": false,
+      "userName": "Wade Warren",
+      "phoneNumber": "+7(123)712-21-28",
+      "emailID": "wade.warren@gmail.com"
+    }
+  ]
+}

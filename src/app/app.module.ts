@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import {ToastrModule} from 'ngx-toastr'
 import { ToasterService } from './services/toaster.service';
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { UserService } from './services/user.service';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,10 +23,11 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     FormsModule,
     ReactiveFormsModule,
     DragDropModule,
+    HttpClientModule,
     ToastrModule.forRoot({preventDuplicates : true}),
     AppRoutingModule
   ],
-  providers: [ToasterService],
+  providers: [ToasterService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
