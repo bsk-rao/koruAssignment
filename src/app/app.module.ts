@@ -8,7 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {ToastrModule} from 'ngx-toastr'
 import { ToasterService } from './services/toaster.service';
-
+import { DragDropModule } from "@angular/cdk/drag-drop";
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +20,7 @@ import { ToasterService } from './services/toaster.service';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    DragDropModule,
     ToastrModule.forRoot({preventDuplicates : true}),
     AppRoutingModule
   ],

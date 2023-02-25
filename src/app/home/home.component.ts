@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToasterService } from '../services/toaster.service';
 import {trigger, transition, style, animate} from '@angular/animations'
 import { Observable } from 'rxjs'
+import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 declare var bootstrap: any;
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ declare var bootstrap: any;
     trigger('leaveAnimation', [
       transition(':leave', [
         style({ transform: 'translateX(0)', opacity: 1 }),
-        animate('2000ms', style({ transform: 'translateX(10%)', opacity: 0 })),
+        animate('1000ms', style({ transform: 'translateX(10%)', opacity: 0 })),
       ]),
     ]),
   ],
@@ -240,6 +241,9 @@ export class HomeComponent implements OnInit {
         return a[column] < b[column] ? 1 : -1;
       });
     }
+  }
+  onDrop(event: any) {
+    moveItemInArray(this.users, event.previousIndex, event.currentIndex);
   }
 }
 
