@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm : FormGroup
 
-  constructor(private router: Router, private fb: FormBuilder, private userService: UserService, private authService: AuthService) {
+  constructor(private router: Router, private fb: FormBuilder, private authService: AuthService) {
     this.loginForm = this.fb.group({
       userName : ['', [Validators.required]],
       passWord : ['', [Validators.required, Validators.minLength(8), this.passwordValidation]]
@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogin() {
-    console.log(this.loginForm)
     if(this.loginForm.status== "VALID") {
         this.authService.successfulLogIn();
         this.router.navigate(['home']);
